@@ -1,0 +1,63 @@
+<div class="popup popup-add" [ngClass]="{'show':showPopup,'close-popup':!showPopup}">
+    <div class="popup-content">
+        <!-- <span class="close">ddd</span>/ -->
+        <span class="btn-close" (click)="closePopup()">&times;</span>
+        <h2 *ngIf="!is_update">เพิ่มกิจกรรม</h2>
+        <h2 *ngIf="is_update">อัปเดตกิจกรรม</h2>
+        <form class="scroll">
+            <div class="group-box">
+                <div class="box-input" [ngClass]="{'error':warn.nameActivity}">
+                    <label for="name-activity">ชื่อกิจกรรม</label><br>
+                    <input class="text-line" type="text" id="name-activity" name="name-activity" [(ngModel)]="form.nameActivity">
+                    <!-- <div class="error-message"></div> -->
+                </div>
+                <div class="box-input">
+                    <label>เริ่มวันที่ - ถึงวันที่</label><br>
+                    <div class="input-date" [ngClass]="{'error':warn.dateTimeStart || warn.dateTimeEnd}">
+                        <input class="text-line" type="date" id="date-start" name="date-start" required [(ngModel)]="form.dateTimeStart"> -
+                        <input class="text-line" type="date" id="date-end" name="date-end" required [(ngModel)]="form.dateTimeEnd">
+                    </div>
+                    <!-- <div class="error-message">ควรมีภาษาอังกฤษ พิมพ์เล็กพิมพ์ใหญ่</div> -->
+                </div>
+                <div class="box-input" [ngClass]="{'error':warn.location}">
+                    <label for="name-activity">สถานที่</label><br>
+                    <input class="text-line" type="text" id="location" name="location" required [(ngModel)]="form.location">
+                    <!-- <div class="error-message">ควรมีภาษาอังกฤษ พิมพ์เล็กพิมพ์ใหญ่</div> -->
+                </div>
+            </div>
+            <div class="group-box group-box--two">
+                <div class="box-input input-details" [ngClass]="{'error-details':warn.details}">
+                    <label for="details">รายละเอียด</label><br>
+                    <textarea class="" id="name-activity" name="password" required [(ngModel)]="form.details"></textarea>
+                    <!-- <div class="error-message">ควรมีภาษาอังกฤษ พิมพ์เล็กพิมพ์ใหญ่</div> -->
+                </div>
+                <div class="box-input" [ngClass]="{'error':warn.participants}">
+                    <label for="participants">จำนวนผู้เข้าร่วม</label><br>
+                    <input class="text-line" type="number" id="participants" name="participants" required [(ngModel)]="form.participants">
+                    <!-- <div class="error-message">ควรมีภาษาอังกฤษ พิมพ์เล็กพิมพ์ใหญ่</div> -->
+                </div>
+            </div>
+            <div>
+                <label for="image"  [ngClass]="{'close':form.asset.length > 0}">
+                    <div class="box-up-file" >
+                        <img src="/assets/image/upload.png" width="50px">
+                        <input type="file" id="image" style="display: none;" multiple (change)="onSelectFiles($event)">
+                    </div>
+                </label>
+                <div class="images-activity" *ngIf="form.asset.length > 0">
+                    <label for="image" class="add-image">
+                        เพิ่มรูป
+                    </label>
+                    <!-- <input type="file" > -->
+                    <div class="box-image" *ngFor="let img of urlFiles;let i = index" >
+                        <span class="btn-close delete-image" (click)="removeImage(i)">&times;</span>
+                        <img [src]="img">
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button (click)="addActivity()">บันทึก</button>
+            </div>
+        </form>
+    </div>
+</div>

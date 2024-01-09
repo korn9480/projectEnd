@@ -1,0 +1,38 @@
+<div class="set-box-login">
+  <div class="login-container">
+      <div class="login_heading">
+          <img class="logo" src="/assets/image/IconYodYa.png">
+          <p routerLink="/login">เข้าสู่ระบบ</p>
+      </div>
+      <form (submit)="login()">
+        <div class="form-group" [ngClass]="{'error_all' : error_code_student == true}">
+          <label for="code_student">รหัสนิสิต</label>
+          <input class="text-line"  type="text" id="code_student" name="code_student" [(ngModel)]="code_student" [maxlength]="8" required>
+          <div *ngIf="error_code_student" class="error-code-student">รหัสนิสิตน้อยกว่า 8 ตัว</div>
+        </div>
+        <div [ngClass]="{'error_all' : error_password == true}">
+          <label for="password">รหัสผ่าน</label>
+          <input class="text-line" type="password" id="password" name="password" [(ngModel)]="password" required>
+          <div *ngIf="error_password" class="error-password">รหัสผ่านไม่ถูกต้อง</div>
+        </div>
+        <div class="form-group space-between">
+          <div class="remember-password">
+            <label>
+              <input type="checkbox" name="remember-password" [(ngModel)]="rememberPassword">
+              <span>จดจำรหัสผ่าน</span> 
+            </label>
+          </div>
+          <a routerLink="/forgot-password">ลืมรหัสผ่าน ?</a>
+        </div>
+        <div class="form-group">
+          <button (click)="login()" type="submit" [disabled]="!code_student || !password" >เข้าสู่ระบบ</button>
+        </div>
+        <div class="form-group space-between">
+          <div class="register">
+            <span class="register-2">ยังไม่มีบัญชี ?</span>
+            <a routerLink="/register">สมัครสมาชิก</a>
+          </div>
+        </div>
+      </form>
+  </div>
+</div>

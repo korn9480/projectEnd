@@ -1,0 +1,57 @@
+/* navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(149, 146, 146, 1); /* Adjust the background color as needed */
+  padding: 10px;
+  color: white;
+  padding-left: 135px;
+  padding-right: 135px;
+}
+.navbar img.logo {
+  height: 120px; 
+}
+.navbar h3 {
+  margin: 0;
+  padding: 0 10px;
+}
+.navbar-right{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar-right a {
+  text-decoration: none;
+  color: white; 
+}
+.navbar-right a:hover {
+  text-decoration: underline;
+  color: #555;
+}
+.profile{
+  width: 80px; 
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.profile img {
+  width: 100%;
+  height: auto;
+}
+/* button add activity */
+.container {
+  background-color: rgba(223, 226, 232, 1);
+  text-align: center;
+  padding: 24px;
+}
+button {
+  padding: 20px 120px;
+  font-size:  16px;
+  background-color: rgba(149, 146, 146, 1);
+  border: none;
+  font-weight: bold;
+}
+.close{
+  display: none;
+}

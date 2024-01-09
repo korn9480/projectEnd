@@ -1,0 +1,25 @@
+<div class="navbar">
+    <div class="navbar-left">
+      <img class="logo" src="../../assets/image/IconYodYa.png" alt="Logo">
+    </div>
+    <div class="navbar-right">
+        <h3><a routerLink="/home">หน้าหลัก</a></h3>
+        <h3><a routerLink="/activity-club">กิจกรรมของชมรม</a></h3>
+        <h3><a routerLink="/calendar">ปฏิทินชมรม</a></h3>
+        <div class="profile">
+            <img src="../../assets/image/profile.png" alt="Profile">
+        </div>
+    </div>
+</div>
+<div class="container">
+    <button (click)="togglePopup()" >เพิ่มกิจกรรม</button>
+    <span *ngIf="showPopup">
+        <app-new-activity [is_update]="is_update" (show)="togglePopup()" [data]="select_activity"></app-new-activity>
+    </span>
+    
+</div>
+<div *ngFor="let activity of activity_join;let i = index">
+    <app-card-join-activity [activity]="activity" (updated)="loadActivity()" (update)="updateActivity($event)"
+        [index_array]="i"
+    ></app-card-join-activity>
+</div>
